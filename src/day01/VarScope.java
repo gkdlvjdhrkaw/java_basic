@@ -17,6 +17,5 @@ public class VarScope {
     } // end main
 
     // int num5 = num1 + num2 + mun3 + num4;
-    // ㅇㄹ //
 
 } // end class

@@ -27,5 +27,4 @@ public class Variable {
         // double score;  // 같은 범위 안에서 같은 이름 사용 불가능
 
     }
-    // ㅇㄹ //
 }

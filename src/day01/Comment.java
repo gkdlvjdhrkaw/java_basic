@@ -13,5 +13,4 @@ public class Comment {
         System.out.println(a + b);
 
     }
-    // ㅇㄹ //
 }
