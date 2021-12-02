@@ -18,4 +18,5 @@ public class Casting2 {
 
 
     }
+    // ㅇㄹ //
 }

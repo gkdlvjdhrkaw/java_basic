@@ -14,4 +14,5 @@ public class Casting1 {
 
         System.out.println("c = " + c);
     }
+    // ㅇㄹ //
 }
