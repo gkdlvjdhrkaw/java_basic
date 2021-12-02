@@ -26,4 +26,5 @@ public class StdOutput {
         System.out.printf("할인비율 : %.2f%%\n", saleRate * 100);
 
     }
+    // ㅇㄴ //
 }

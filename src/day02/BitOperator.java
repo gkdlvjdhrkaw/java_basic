@@ -29,4 +29,5 @@ public class BitOperator {
         System.out.println(~y);  //  1111 0111
 
     }
+    // ㅇㄴ //
 }
