@@ -31,4 +31,5 @@ public class ArrayDelete {
         System.out.println("삭제 후 : " + Arrays.toString(arr));
 
     }
+    // ㅇㅋ
 }

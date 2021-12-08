@@ -29,4 +29,5 @@ public class ArraySearch {
         System.out.println("찾은 음식의 인덱스 : " + index);
 
     }
+    //ㅇㅋ
 }
