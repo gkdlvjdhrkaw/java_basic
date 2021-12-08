@@ -14,27 +14,29 @@ public class ArrayPushQuiz {
 
         Scanner sc = new Scanner(System.in);
 
-        String[] foods = null;
-        String[] temp = new String[foods.length + 1];
-
         System.out.println("# 먹고 싶은 음식을 입력하세요 !!");
         System.out.println("# 입력을 중지하려면 <그만> 이라고 입력하세요.");
 
+        String[] foods = {};
 
         while (true) {
             System.out.printf(">> ");
             String answer = sc.nextLine();
+            //System.out.println(Arrays.toString(foods));
 
-            if (answer == "그만") break;
+            if (answer.equals("그만")) break;
+
+            String[] temp = new String[foods.length + 1];
 
             for (int i = 0; i < foods.length; i++) {
-                temp[i] = foods[i];
+               temp[i] = foods[i];
             }
             temp[temp.length - 1] = answer;
+            foods = temp;
+            temp = null;
         }
-        foods = temp;
-        temp = null;
 
-        System.out.println(Arrays.toString(foods));
+        System.out.println("먹고 싶은 음식들 : " + Arrays.toString(foods));
+        sc.close();
     }
 }

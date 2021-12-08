@@ -32,7 +32,7 @@ public class ArrayBasic {
         System.out.println("=============================");
         // 향상된 for문 (Enhanced for loop)
         for (int n : arr) {  // for n in arr (파이썬 비교)
-            System.out.println(arr[n]);
+            System.out.println(n);
         }
 
         // 값 목록나열로 배열 만들기
