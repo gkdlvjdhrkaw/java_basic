@@ -39,4 +39,5 @@ public class ArrayPushQuiz {
         System.out.println("먹고 싶은 음식들 : " + Arrays.toString(foods));
         sc.close();
     }
+    // ㅇㅋ
 }
