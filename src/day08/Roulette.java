@@ -16,6 +16,7 @@ public class Roulette {
 
             if (playerNum < 2 || playerNum > 4) {
                 System.out.println("인원 수가 올바르지 않습니다. (2 ~ 4명)");
+                return;
             }
 
         // 참여 인원 수대로 이름을 반복 입력 받은 후 배열에 저장
@@ -32,10 +33,7 @@ public class Roulette {
 
         System.out.printf("\n실탄 개수 (1 ~ 5개) ==> ");
         int bullet = sc.nextInt();
-
-        if (bullet < 0 || bullet > 5) {
-            System.out.println("총알 그거 맞아..???");
-        }
+        sc.nextLine();
 
         // 총에 실탄수만큼 총알을 배치해야 함.
         boolean[] magazine = new boolean[6];
@@ -45,15 +43,17 @@ public class Roulette {
         // 입력된 실탄 수만큼 탄창배열의 내부값을 랜덤하게 true 로 바꿔야 함.
         Random r = new Random();
 
-        int success = 0; // 정확하게 총알을 장전한 횟수
+        int success = 0; //정확하게 총알을 장전한 횟수
         while (true) {
+            //입력된 실탄 수만큼 탄창배열의 내부값을 랜덤하게 true 로 바꿔야 함.
             int position = r.nextInt(magazine.length);
-            if (magazine[position]) { // 탄창안에 실탄이 안들어간 곳에만
-                magazine[position] = true; // 총알을 넣어라
+            if (!magazine[position]) { //탄창안에 실탄이 안들어간 곳에만
+                magazine[position] = true; //총알을 넣어라
                 success++;
             }
             if (success == bullet) break;
-        }// while end
+        } // while end
+
 
         //System.out.println("탄창 : " + Arrays.toString(magazine));
 
@@ -73,19 +73,67 @@ public class Roulette {
             4. 턴 조정 : 지금 격발한 플레이어가 마지막 인덱스 플레이어면
                         다음 턴은 0번으로 조정, 아니면 ++로 처리
             */
-            for (int i = 0; i < playerNum; i++) {
-                int shoot = r.nextInt(magazine.length);
-                System.out.printf("\n[%s 의 턴!]  탄창을 무작위로 돌립니다.\n# 엔터를 누르면 격발합니다.", i);
-                sc.nextLine();
 
-                if (magazine[success]) {
-                    System.out.println("빵 !!!!! 사랑...");
+            int shoot = r.nextInt(magazine.length);
+            System.out.printf("\n[%s 의 턴!]  탄창을 무작위로 돌립니다.\n", player[turn]);
+
+            System.out.println("# 엔터를 누르면 격발합니다.");
+            sc.nextLine();
+
+            // 생존 사망 판정
+            if (magazine[shoot]) {
+                System.out.println("빵 !!!!! 사망...");
+
+                // 사망자를 players 배열에서 삭제
+                for (int i = turn; i < player.length - 1; i++) {
+                    player[i] = player[i + 1];
+                }
+                String[] temp = new String[--playerNum];
+                for (int i = 0; i < temp.length; i++) {
+                    temp[i] = player[i];
+                }
+                player = temp;
+                temp = null;
+
+                // 탄창 배열에서 총알이 나간 위치값을 재조정
+                magazine[shoot] = false;
+                bullet--;
+
+                // 게임 종료 조건
+                // 남은 플레이어가 1명일 때
+                if (playerNum == 1) {
+                    System.out.printf("\n# 단 한명만 살아남았습니다. 게임을 종료합니다.");
+                    System.out.printf("# 최후 생존자 : [%s]\n", player[0]);
                     break;
                 }
-                if (i == playerNum - 1);
-                    i = 0;
+                // 총알이 0개 일때
+                else if (bullet == 0) {
+                    System.out.println("\n# 총알이 모두 소진되었습니다. 게임을 종료합니다.");
+                    System.out.printf("# 생존한 인원 : %s\n", Arrays.toString(player));
+                    break;
+                }
+                // 계속 게임을 진행할 떄
+                else {
+                    System.out.println("\n# 남은 인원으로 게임을 계속합니다.");
+                    System.out.printf("# 생존한 인원 : %s\n", Arrays.toString(player));
+                    // 마지막 플레이어가 죽었을 경우엔 turn 을 0으로 재조정
+                    if (turn == player.length) {
+                        turn = 0;
+                    }
+                    continue;
+                }
+
+            } else {
+                System.out.println("생존하셨슴.");
+                if (turn == player.length - 1) {
+                    turn = 0;
+                } else {
+                    turn++;
+                }
             }
+
         }// while end
+        System.out.println("# 게임을 종료합니다.");
 
 
     }// main end
