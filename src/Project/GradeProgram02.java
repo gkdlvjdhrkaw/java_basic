@@ -36,12 +36,14 @@ public class GradeProgram02 {
 
     // 프로그램 메인
     static void main() {
+        /*
         System.out.println(Arrays.toString(teacherID));
         System.out.println(Arrays.toString(teacherPW));
         System.out.println(Arrays.toString(teacher));
         System.out.println(Arrays.toString(studentID));
         System.out.println(Arrays.toString(studentPW));
         System.out.println(Arrays.toString(student));
+         */
         while (true) {
             System.out.println("==============================");
             System.out.println("\t [[ 아이섹 초등학교 ]]");
@@ -98,6 +100,12 @@ public class GradeProgram02 {
                     log = i;
                     System.out.println(teacher[log] + "선생님이 로그인 하셨습니다.");
                     System.out.println(teacher[log] + "님 반갑습니다. (*´∀`*)");
+                    String[] temp = new String[loginUser.length + 1];
+                    for (int k = 0; k < loginUser.length; k++) {
+                        temp[k] = loginUser[k];
+                    }
+                    temp[temp.length - 1] = UserID;
+                    loginUser = temp;
                     teacherID = loginUser;
                     return;
                 }
@@ -107,6 +115,12 @@ public class GradeProgram02 {
                     log = j;
                     System.out.println(student[log] + "학생이 로그인하였습니다.");
                     System.out.println(student[log] + "님 반갑습니다. (*´∀`*)");
+                    String[] temp = new String[loginUser.length + 1];
+                    for (int k = 0; k < loginUser.length; k++) {
+                        temp[k] = loginUser[k];
+                    }
+                    temp[temp.length - 1] = UserID;
+                    loginUser = temp;
                     studentID = loginUser;
                     return;
                 }
@@ -126,18 +140,12 @@ public class GradeProgram02 {
         for (int i = 0; i < idcnt; i++) {
             if (teacherID[i].equals(id) && teacherPW[i].equals(pw)) {
                 log = i;
+                clear();
                 System.out.println(teacher[log] + "님이 로그아웃 하셨습니다.(｡•́︿•̀｡) ");
-
-                String[] temp = new String[loginUser.length - 1];
-                for (int a = 0; a < loginUser.length; i--) {
-                    temp[i] = loginUser[i];
-                }
-                loginUser = temp;
             }
         }
         main();
     }
-
 
 
     // 회원가입 함수
@@ -152,7 +160,7 @@ public class GradeProgram02 {
             teachinsertNAME(sc.next());
             main();
         }
-        if (!whois()) {
+        else if (!whois()) {
             System.out.print("ID를 입력해주세요 : ");
             studentinsertID(sc.next());
             System.out.print("PW를 입력해주세요 : ");
@@ -184,7 +192,6 @@ public class GradeProgram02 {
                         return true;
                     case "2":
                         System.out.println("구라 치다 걸리면 알죠??");
-                        whois();
                 }
             } // if end
             else if (choice == 2) {
@@ -198,10 +205,9 @@ public class GradeProgram02 {
                         return false;
                     case "2":
                         System.out.println("뭔데.. 도대체 누군데..");
-                        whois();
                 }
             } // if end
-            if (choice == 3) {
+            else if (choice == 3) {
                 main();
             } else {
                 System.out.println("버튼을 잘못 누르셨어요 ! \n어머 저도 실수로 종료를 눌렀네요 !");
@@ -210,15 +216,12 @@ public class GradeProgram02 {
         } // while end
     } // whois end
 
-    // 현재 로그인한 사람
-    static void nowUser() {
-        String[] temp = new String[loginUser.length + 1];
-        for (int i = 0; i < loginUser.length; i++) {
-            temp[i] = loginUser[i];
-        }
-        loginUser = temp;
-    }
 
+    // 현재 로그인 유저 초기화 함수
+    static void clear() {
+        loginUser = new String[0];
+
+    }
 
     // 선생 ID 삽입 함수
     static void teachinsertID(String AddteacherID) {
@@ -486,15 +489,6 @@ public class GradeProgram02 {
     // ====================================================================================== //
     public static void main(String[] args) {
 
-        // 더미 배열 확인
-        /*
-        System.out.println(Arrays.toString(teacherID));
-        System.out.println(Arrays.toString(teacherPW));
-        System.out.println(Arrays.toString(teacher));
-        System.out.println(Arrays.toString(studentID));
-        System.out.println(Arrays.toString(studentPW));
-        System.out.println(Arrays.toString(student));
-         */
 
         main();
         if (loginUser == teacherID) {
@@ -522,7 +516,7 @@ public class GradeProgram02 {
             } // while end
         } // if end
 
-        if (loginUser == studentID) {
+        else if (loginUser == studentID) {
             while (true) {
                 studentmain();
                 System.out.print("선택해주세요 >> ");
