@@ -33,7 +33,7 @@ public class PersonMenu {
             }
         }
 
-        public void studentMenu() {
+        /*public void studentMenu() {
             while (true) {
                 System.out.print("메뉴 번호 >> ");
                 int choice = sc.nextInt();
@@ -47,7 +47,7 @@ public class PersonMenu {
                 }
 
             }
-        }
+        }*/
 
 
    }
