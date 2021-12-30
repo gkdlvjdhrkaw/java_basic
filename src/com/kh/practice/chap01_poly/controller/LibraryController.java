@@ -27,6 +27,7 @@ public class LibraryController {
         bList[4] = new CookBook("최현석 날 따라해봐", "최현석", "소금책", true);
     }
 
+
     //회원 가입 기능
     public void insertMember(Member mem) {
         this.mem = mem;
@@ -61,6 +62,7 @@ public class LibraryController {
         return searched;
     }
 
+
     //책 빌리는 기능
     public int rentBook(int index) {
         Book book = bList[index];
@@ -80,4 +82,5 @@ public class LibraryController {
         }
         return RENT_FAIL;
     }
-}
+
+} // class end
