@@ -2,7 +2,6 @@ package com.kh.practice.list.library.view;
 
 import com.kh.practice.list.library.controller.BookController;
 import com.kh.practice.list.library.model.vo.Book;
-import day02.StdOutput;
 
 import java.util.ArrayList;
 import java.util.Scanner;
