@@ -1,8 +1,8 @@
 package day20.collection.map.song;
 
 import java.util.Scanner;
+/*
 
-import static day20.collection.map.song.Controller.insertMusic;
 import static day20.collection.map.song.Controller.mainMenu;
 
 public class MainClass {
@@ -35,4 +35,4 @@ public class MainClass {
 
 
     } // main end
-}
+*/
